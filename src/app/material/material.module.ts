@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTabsModule, MatSidenavModule, MatIconModule, MatButtonModule, MatToolbarModule,
-  MatListModule, MatTableModule } from '@angular/material';
+  MatListModule, MatTableModule, MatProgressBarModule, MatProgressSpinnerModule, MatCheckboxModule } from '@angular/material';
 
 @NgModule({
   declarations: [],
@@ -13,7 +13,10 @@ import { MatTabsModule, MatSidenavModule, MatIconModule, MatButtonModule, MatToo
     MatIconModule,
     MatToolbarModule,
     MatListModule,
-    MatTableModule
+    MatTableModule,
+    MatProgressBarModule,
+    MatCheckboxModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     MatTabsModule,
@@ -22,7 +25,10 @@ import { MatTabsModule, MatSidenavModule, MatIconModule, MatButtonModule, MatToo
     MatIconModule,
     MatToolbarModule,
     MatListModule,
-    MatTableModule
+    MatTableModule,
+    MatProgressBarModule,
+    MatCheckboxModule,
+    MatProgressSpinnerModule
   ]
 })
 export class MaterialModule { }

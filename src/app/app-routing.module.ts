@@ -1,12 +1,17 @@
+import { UserDetailsComponent } from './users/user-details/user-details.component';
 import { UsersComponent } from './users/users.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { NotFoundComponent } from './error-pages/not-found/not-found.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'users', component: UsersComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' }
+  { path: 'user/:id', component: UserDetailsComponent },
+  { path: '404', component: NotFoundComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', redirectTo: '/404', pathMatch: 'full' }
 ];
 
 @NgModule({

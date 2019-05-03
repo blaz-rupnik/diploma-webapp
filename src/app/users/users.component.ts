@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
+import { Router } from '@angular/router';
 import { User } from './user.model';
 import { RepositoryService } from '../shared/repository.service';
 
@@ -11,9 +12,12 @@ import { RepositoryService } from '../shared/repository.service';
 export class UsersComponent implements OnInit {
 
   public dataSource = new MatTableDataSource<User>();
-  public displayedColumns = ['Name','DateOfBirth'];
-  
-  constructor(private repoService: RepositoryService) { }
+  public displayedColumns = ['Name','DateOfBirth','details'];
+
+  constructor(
+    private repoService: RepositoryService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.getUsers();  
@@ -22,8 +26,12 @@ export class UsersComponent implements OnInit {
   public getUsers = () => {
     this.repoService.getData('Users').subscribe(res => {
       this.dataSource.data = res as User[];
-      console.log("success");
     })
+  }
+
+  public redirectToDetails = (id: string) => {
+    let url: string = `/user/${id}`;
+    this.router.navigate([url]);
   }
 
 }

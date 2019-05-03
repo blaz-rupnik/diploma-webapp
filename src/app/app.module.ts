@@ -12,6 +12,8 @@ import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UsersComponent } from './users/users.component';
+import { NotFoundComponent } from './error-pages/not-found/not-found.component';
+import { UserDetailsComponent } from './users/user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { UsersComponent } from './users/users.component';
     HomeComponent,
     HeaderComponent,
     SidenavListComponent,
-    UsersComponent
+    UsersComponent,
+    NotFoundComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
