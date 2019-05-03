@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { UsersComponent } from './users/users.component';
 import { NotFoundComponent } from './error-pages/not-found/not-found.component';
 import { UserDetailsComponent } from './users/user-details/user-details.component';
+import { UserCreateComponent } from './users/user-create/user-create.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { UserDetailsComponent } from './users/user-details/user-details.componen
     SidenavListComponent,
     UsersComponent,
     NotFoundComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    UserCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import { UserDetailsComponent } from './users/user-details/user-details.componen
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

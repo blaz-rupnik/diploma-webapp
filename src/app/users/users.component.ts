@@ -12,7 +12,7 @@ import { RepositoryService } from '../shared/repository.service';
 export class UsersComponent implements OnInit {
 
   public dataSource = new MatTableDataSource<User>();
-  public displayedColumns = ['Name','DateOfBirth','details'];
+  public displayedColumns = ['Name','DateOfBirth','details','update','delete'];
 
   constructor(
     private repoService: RepositoryService,
@@ -32,6 +32,12 @@ export class UsersComponent implements OnInit {
   public redirectToDetails = (id: string) => {
     let url: string = `/user/${id}`;
     this.router.navigate([url]);
+  }
+
+  public deleteUser = (id: string) => {
+    this.repoService.delete(`Users/${id}`).subscribe(res => {
+      console.log("success");
+    })
   }
 
 }
