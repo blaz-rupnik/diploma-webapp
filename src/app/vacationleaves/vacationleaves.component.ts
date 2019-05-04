@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class VacationleavesComponent implements OnInit {
 
   public dataSource = new MatTableDataSource<VacationLeave>();
-  public displayedColumns = ['Name','DateFrom','DateTo'];
+  public displayedColumns = ['Name','DateFrom','DateTo','delete'];
 
   constructor(
     private repoService: RepositoryService,
@@ -26,6 +26,12 @@ export class VacationleavesComponent implements OnInit {
   public getVacationLeaves = () => {
     this.repoService.getData('VacationLeaves').subscribe(res => {
       this.dataSource.data = res as VacationLeave[];
+    })
+  }
+
+  public deleteVacationLeave = (id: string) => {
+    this.repoService.delete(`VacationLeaves/${id}`).subscribe(res => {
+      this.getVacationLeaves();
     })
   }
 
