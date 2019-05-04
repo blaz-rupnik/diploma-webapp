@@ -1,0 +1,38 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-card fxFlex="500px" fxFlex.xs="100%">
+    <mat-card-title>Ustvari nov letni dopust</mat-card-title>
+    <form [formGroup]="vacationLeaveForm" autocomplete="off" novalidate (ngSubmit)="createVacationLeave(vacationLeaveForm.value)" fxLayout="column wrap"
+      fxLayoutAlign="center center" fxLayoutGap="10px">
+    <mat-card-content> 
+      <mat-form-field>
+        <mat-label>Zaposleni</mat-label>
+        <mat-select formControlName="user">
+          <mat-option *ngFor="let user of listDataSource" [value]="user.Id">
+            {{user.Name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Izberi začetni datum" formControlName="dateFrom" id="dateFrom" 
+              readonly (click)="picker.open()">
+        <mat-error *ngIf="hasError('dateFrom', 'required')">Začetni datum je obvezen</mat-error>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker2" placeholder="Izberi končni datum" formControlName="dateTo" id="dateTo" 
+              readonly (click)="picker2.open()">
+        <mat-error *ngIf="hasError('dateTo', 'required')">Končni datum je obvezen</mat-error>
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions align="center">
+      <button mat-raised-button color="primary" [disabled]="!vacationLeaveForm.valid">Ustvari</button>
+      <button type="button" mat-raised-button color="warn" (click)="onCancel()">Prekliči</button>  
+    </mat-card-actions>
+    </form>
+  </mat-card>
+</section>

@@ -39,7 +39,6 @@ export class UserCreateComponent implements OnInit {
       Name: userFromValue.name,
       DateOfBirth: userFromValue.dateOfBirth
     }
-    console.log(newuser);
     this.repository.create('Users',newuser).subscribe(res => {
       this.location.back();
     });

@@ -16,6 +16,9 @@ import { NotFoundComponent } from './error-pages/not-found/not-found.component';
 import { UserDetailsComponent } from './users/user-details/user-details.component';
 import { UserCreateComponent } from './users/user-create/user-create.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { VacationleavesComponent } from './vacationleaves/vacationleaves.component';
+import { VacationleaveCreateComponent } from './vacationleaves/vacationleave-create/vacationleave-create.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     UsersComponent,
     NotFoundComponent,
     UserDetailsComponent,
-    UserCreateComponent
+    UserCreateComponent,
+    VacationleavesComponent,
+    VacationleaveCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +41,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     FlexLayoutModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,5 @@
+import { VacationleaveCreateComponent } from './vacationleaves/vacationleave-create/vacationleave-create.component';
+import { VacationleavesComponent } from './vacationleaves/vacationleaves.component';
 import { UserCreateComponent } from './users/user-create/user-create.component';
 import { UserDetailsComponent } from './users/user-details/user-details.component';
 import { UsersComponent } from './users/users.component';
@@ -12,6 +14,9 @@ const routes: Routes = [
   { path: 'users', component: UsersComponent },
   { path: 'user/:id', component: UserDetailsComponent },
   { path: 'users/new', component: UserCreateComponent },
+
+  { path: 'vacationleaves', component: VacationleavesComponent },
+  { path: 'vacationleaves/new', component: VacationleaveCreateComponent },
 
   { path: '404', component: NotFoundComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
