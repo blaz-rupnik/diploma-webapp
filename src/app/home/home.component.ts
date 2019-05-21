@@ -1,3 +1,4 @@
+import { RepositoryFunctionService } from './../shared/repository.function-service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _functionService: RepositoryFunctionService) { }
+
+  public hasWarnings: boolean = false;
 
   ngOnInit() {
+    this.getWarnings();
+  }
+
+  public getWarnings = () => {
+    this._functionService.checkDbIntegrity().subscribe(res => {
+      let result = res as [];
+      if(result.length > 0){
+        this.hasWarnings = true;
+      }
+    })
   }
 
   public executeSelectedChange = (event) => {
