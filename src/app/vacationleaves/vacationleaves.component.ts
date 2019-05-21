@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class VacationleavesComponent implements OnInit {
 
   public dataSource = new MatTableDataSource<VacationLeave>();
-  public displayedColumns = ['Name','DateFrom','DateTo','delete'];
+  public displayedColumns = ['Name','DateFrom','DateTo','Status','delete'];
 
   constructor(
     private repoService: RepositoryService,

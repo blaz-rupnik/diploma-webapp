@@ -19,6 +19,11 @@
     <td mat-cell *matCellDef="let element"> {{element.DateTo | date}} </td>
   </ng-container>
 
+  <ng-container matColumnDef="Status">
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <td mat-cell *matCellDef="let element">{{element.Status.Name}}</td>
+  </ng-container>
+
   <!-- <ng-container matColumnDef="details">
     <th mat-header-cell *matHeaderCellDef> Podrobnosti </th>
     <td mat-cell *matCellDef="let element">

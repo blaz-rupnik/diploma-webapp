@@ -4,5 +4,11 @@ export interface VacationLeave {
     DateFrom: Date,
     DateTo: Date,
     UserId: string,
-    User?: User
+    User?: User,
+    Status?: VacationRequestStatus
+}
+
+export interface VacationRequestStatus {
+    Id: string,
+    Name: string
 }
