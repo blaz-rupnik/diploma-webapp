@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RepositoryService } from 'src/app/shared/repository.service';
 import { Location } from '@angular/common'
+import { RepositoryFunctionService } from 'src/app/shared/repository.function-service';
 
 @Component({
   selector: 'app-user-create',
@@ -15,7 +16,8 @@ export class UserCreateComponent implements OnInit {
 
   constructor(
     private location: Location,
-    private repository: RepositoryService
+    //private repository: RepositoryService,
+    private functionRepoService: RepositoryFunctionService
   ) { }
 
   ngOnInit() {
@@ -39,7 +41,7 @@ export class UserCreateComponent implements OnInit {
       Name: userFromValue.name,
       DateOfBirth: userFromValue.dateOfBirth
     }
-    this.repository.create('Users',newuser).subscribe(res => {
+    this.functionRepoService.createUser(newuser).subscribe(res => {
       this.location.back();
     });
   }

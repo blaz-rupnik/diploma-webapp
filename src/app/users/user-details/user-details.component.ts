@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RepositoryService } from 'src/app/shared/repository.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../user.model';
+import { RepositoryFunctionService } from 'src/app/shared/repository.function-service';
 
 @Component({
   selector: 'app-user-details',
@@ -12,7 +13,10 @@ export class UserDetailsComponent implements OnInit {
 
   public user: User;
 
-  constructor(private repository: RepositoryService, private router: Router, 
+  constructor(
+    //private repository: RepositoryService,
+    private functionRepoService: RepositoryFunctionService,
+    //private router: Router, 
     private activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -23,9 +27,8 @@ export class UserDetailsComponent implements OnInit {
     let id: string = this.activeRoute.snapshot.params['id'];
     let apiUrl: string = `/Users/${id}`;
 
-    this.repository.getData(apiUrl).subscribe(res => {
+    this.functionRepoService.getUsers(id).subscribe(res => {
       this.user = res as User;
-      console.log(this.user);
     })
   }
 

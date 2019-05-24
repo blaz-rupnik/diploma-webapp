@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material';
 import { Router } from '@angular/router';
 import { User } from './user.model';
 import { RepositoryService } from '../shared/repository.service';
+import { RepositoryFunctionService } from '../shared/repository.function-service';
 
 @Component({
   selector: 'app-users',
@@ -15,7 +16,8 @@ export class UsersComponent implements OnInit {
   public displayedColumns = ['Name','DateOfBirth','details','delete'];
 
   constructor(
-    private repoService: RepositoryService,
+    //private repoService: RepositoryService,
+    private functionRepoService: RepositoryFunctionService,
     private router: Router
   ) { }
 
@@ -24,7 +26,7 @@ export class UsersComponent implements OnInit {
   }
 
   public getUsers = () => {
-    this.repoService.getData('Users').subscribe(res => {
+    this.functionRepoService.getUsers().subscribe(res => {
       this.dataSource.data = res as User[];
     })
   }
@@ -35,7 +37,7 @@ export class UsersComponent implements OnInit {
   }
 
   public deleteUser = (id: string) => {
-    this.repoService.delete(`Users/${id}`).subscribe(res => {
+    this.functionRepoService.deleteUser(id).subscribe(res => {
       this.getUsers();
     })
   }
