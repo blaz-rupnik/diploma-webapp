@@ -1,3 +1,4 @@
+import { VacationLeave } from './../vacationleaves/vacationleave.model';
 import { User } from './../users/user.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -23,6 +24,7 @@ export class RepositoryFunctionService{
     public getTasks = () => {
       return this.http.get(`${environment.urlFunctionsAddress}/GetTasks`);
     }
+
     public getUsers = (userId?: string) => {
       if(userId){
         return this.http.get(`${environment.urlFunctionsAddress}/GetUsers?userId=${userId}`);
@@ -36,6 +38,21 @@ export class RepositoryFunctionService{
     public createUser = (user: User) => {
       return this.http.post(`${environment.urlFunctionsAddress}/CreateUser`, user, this.generateHeaders())
     }
+
+    public getVacationLeaves = (absenceId?: string) => {
+      if(absenceId){
+        return this.http.get(`${environment.urlFunctionsAddress}/GetVacationLeaves?absenceId=${absenceId}`);
+      }else{
+        return this.http.get(`${environment.urlFunctionsAddress}/GetVacationLeaves`);
+      }
+    }
+    public deleteVacationLeave = (absenceId: string) => {
+      return this.http.delete(`${environment.urlFunctionsAddress}/DeleteVacationLeave?absenceId=${absenceId}`);
+    }
+    public createVacationLeave = (absence: VacationLeave) => {
+      return this.http.post(`${environment.urlFunctionsAddress}/CreateVacationLeave`, absence, this.generateHeaders());
+    }
+
     private generateHeaders = () => {
       return {
         headers: new HttpHeaders({'Content-Type': 'application/json'})

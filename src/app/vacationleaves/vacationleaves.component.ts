@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { RepositoryService } from '../shared/repository.service';
 import { Router } from '@angular/router';
+import { RepositoryFunctionService } from '../shared/repository.function-service';
 
 @Component({
   selector: 'app-vacationleaves',
@@ -16,7 +17,7 @@ export class VacationleavesComponent implements OnInit {
 
   constructor(
     private repoService: RepositoryService,
-    private router: Router
+    private functionsRepoService: RepositoryFunctionService
   ) { }
 
   ngOnInit() {
@@ -24,13 +25,13 @@ export class VacationleavesComponent implements OnInit {
   }
 
   public getVacationLeaves = () => {
-    this.repoService.getData('VacationLeaves').subscribe(res => {
+    this.functionsRepoService.getVacationLeaves().subscribe(res => {
       this.dataSource.data = res as VacationLeave[];
     })
   }
 
   public deleteVacationLeave = (id: string) => {
-    this.repoService.delete(`VacationLeaves/${id}`).subscribe(res => {
+    this.functionsRepoService.deleteVacationLeave(id).subscribe(res => {
       this.getVacationLeaves();
     })
   }

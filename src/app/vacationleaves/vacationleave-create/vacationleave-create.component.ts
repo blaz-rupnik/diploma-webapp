@@ -56,7 +56,7 @@ export class VacationleaveCreateComponent implements OnInit {
       DateTo: vacationLeaveFormValue.dateTo,
       UserId: vacationLeaveFormValue.user
     }
-    this.repoService.create('VacationLeaves',newvacationleave).subscribe(res => {
+    this.functionRepoService.createVacationLeave(newvacationleave).subscribe(res => {
       var vacationLeaveData = res as VacationLeave;
       var dateFrom = moment(vacationLeaveData.DateFrom).format('YYYY-MM-DD');
       var dateTo = moment(vacationLeaveData.DateTo).format('YYYY-MM-DD');

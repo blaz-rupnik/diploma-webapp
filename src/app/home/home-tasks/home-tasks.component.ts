@@ -22,7 +22,6 @@ export class HomeTasksComponent implements OnInit {
   public getTasks = () => {
     this._functionsRepoService.getTasks().subscribe(res => {
       this.tasks = res as Task[];
-      console.log(this.tasks);
     })
   }
 
