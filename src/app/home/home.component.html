@@ -1,7 +1,7 @@
 <section fxLayout="column wrap">
   <mat-tab-group (selectedTabChange)="executeSelectedChange($event)">
     <mat-tab label="Opozorila"> 
-      <div *ngIf="hasWarnings"><p>V bazi so nekonsistentni podatki!</p></div> 
+      <app-home-tasks></app-home-tasks> 
     </mat-tab>
     <mat-tab label="Statistika">
        <p>Ni še v uporabi</p>

@@ -1,0 +1,7 @@
+<h2>Moje naloge</h2>
+<ul class="tasks">
+  <li *ngFor="let task of tasks">
+    <span class="badge">{{task.TaskType}}: {{task.TaskName}}</span> <div class="acceptTask" (click)="acceptTask(task)"><mat-icon>check</mat-icon></div>
+    <div class="rejectTask" (click)="rejectTask(task)"><mat-icon>close</mat-icon></div>
+  </li>
+</ul>

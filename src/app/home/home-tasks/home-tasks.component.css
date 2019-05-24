@@ -1,0 +1,28 @@
+.tasks {
+    margin: 0 0 2em 0;
+    list-style-type: none;
+    padding: 0;
+  }
+
+.tasks li {
+    position: relative;
+    left: 0;
+    background-color: #EEE;
+    margin: .7em;
+    padding: .3em 0;
+    border-radius: 4px;
+}
+
+.acceptTask {
+    display: inline-block;
+    margin-left: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.rejectTask {
+    display: inline-block;
+    margin-left: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}

@@ -1,9 +1,11 @@
+import { RepositoryFunctionService } from './../../shared/repository.function-service';
 import { VacationLeave } from './../vacationleave.model';
 import { User } from './../../users/user.model';
 import { Component, OnInit } from '@angular/core';
 import { RepositoryService } from 'src/app/shared/repository.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-vacationleave-create',
@@ -18,6 +20,7 @@ export class VacationleaveCreateComponent implements OnInit {
 
   constructor(
     private repoService: RepositoryService,
+    private functionRepoService: RepositoryFunctionService,
     private location: Location
   ) { }
 
@@ -54,7 +57,15 @@ export class VacationleaveCreateComponent implements OnInit {
       UserId: vacationLeaveFormValue.user
     }
     this.repoService.create('VacationLeaves',newvacationleave).subscribe(res => {
-      this.location.back();
+      var vacationLeaveData = res as VacationLeave;
+      var dateFrom = moment(vacationLeaveData.DateFrom).format('YYYY-MM-DD');
+      var dateTo = moment(vacationLeaveData.DateTo).format('YYYY-MM-DD');
+      //send notification of new vacation leave request
+      this.functionRepoService.sendNotification(vacationLeaveData.User.Name,dateFrom,dateTo).subscribe(res => {
+        this.location.back();
+      });
+    }, error => {
+      console.log(error.status);
     });
   }
 

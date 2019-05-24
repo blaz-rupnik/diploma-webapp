@@ -19,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { VacationleavesComponent } from './vacationleaves/vacationleaves.component';
 import { VacationleaveCreateComponent } from './vacationleaves/vacationleave-create/vacationleave-create.component';
 import { FormsModule } from '@angular/forms';
+import { HomeTasksComponent } from './home/home-tasks/home-tasks.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { FormsModule } from '@angular/forms';
     UserDetailsComponent,
     UserCreateComponent,
     VacationleavesComponent,
-    VacationleaveCreateComponent
+    VacationleaveCreateComponent,
+    HomeTasksComponent
   ],
   imports: [
     BrowserModule,
