@@ -1,3 +1,41 @@
-<p>
-  monthlyrating-create works!
-</p>
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-card fxFlex="500px" fxFlex.xs="100%">
+    <mat-card-title>Ustvari novo oceno za sodelavca</mat-card-title>
+    <form [formGroup]="monthlyRatingForm" autocomplete="off" novalidate (ngSubmit)="createMonthlyRating(monthlyRatingForm.value)" fxLayout="column wrap"
+      fxLayoutAlign="center center" fxLayoutGap="10px">
+    <mat-card-content> 
+      <mat-form-field>
+        <mat-label>Zaposleni</mat-label>
+        <mat-select formControlName="user">
+          <mat-option *ngFor="let user of listDataSource" [value]="user.Id">
+            {{user.Name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Leto (yyyy format)" formControlName="year" id="year">
+        <mat-error *ngIf="hasError('year', 'required')">Leto je obvezno</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Mesec (1-12)" formControlName="month" id="month">
+        <mat-error *ngIf="hasError('month', 'required')">Mesec je obvezen</mat-error>
+        <mat-error *ngIf="hasError('month', 'max')">Številka je prevelika</mat-error>
+        <mat-error *ngIf="hasError('month', 'min')">Številka je premajhna</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Ocena (1-5)" formControlName="grade" id="grade">
+        <mat-error *ngIf="hasError('grade', 'required')">Ocena je obvezna</mat-error>
+        <mat-error *ngIf="hasError('grade', 'max')">Ocena je prevelika</mat-error>
+        <mat-error *ngIf="hasError('grade', 'min')">Ocena je premajhna</mat-error>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions align="center">
+      <button mat-raised-button color="primary" [disabled]="!monthlyRatingForm.valid">Ustvari</button>
+      <button type="button" mat-raised-button color="warn" (click)="onCancel()">Prekliči</button>  
+    </mat-card-actions>
+    </form>
+  </mat-card>
+</section>

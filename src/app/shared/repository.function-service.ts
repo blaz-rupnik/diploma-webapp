@@ -48,7 +48,7 @@ export class RepositoryFunctionService{
     }
 
     public createMonthlyRating = (monthlyrating: MonthlyRating) => {
-      return this.http.post(`${environment.urlFunctionsAddress}/CreateMonthlyRating`, monthlyrating, this.generateHeaders());
+      return this.http.post(`${environment.urlFunctionsAddress}/CreateMonthlyGrade`, monthlyrating, this.generateHeaders());
     }
 
     //vacation leaves

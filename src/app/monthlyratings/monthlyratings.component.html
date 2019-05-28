@@ -1,3 +1,45 @@
-<p>
-  monthlyratings works!
-</p>
+<mat-form-field fxLayoutAlign="center center">
+  <mat-label>Izberi zaposlenega</mat-label>
+  <mat-select (selectionChange)="changeUser($event.value)">
+    <mat-option *ngFor="let user of userDataSource" [value]="user.Id">
+      {{user.Name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<div>
+  <a [routerLink]="['/monthlyratings/new']" mat-button color="primary">Nova ocena</a>
+</div> 
+<br>
+<table mat-table [dataSource]="dataSource">
+  <ng-container matColumnDef="Name">
+    <th mat-header-cell *matHeaderCellDef> Sodelavec </th>
+    <td mat-cell *matCellDef="let element">{{element.user.name}}</td>
+  </ng-container>
+  
+  <ng-container matColumnDef="Year">
+    <th mat-header-cell *matHeaderCellDef> Leto </th>
+    <td mat-cell *matCellDef="let element"> {{element.year}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Month">
+    <th mat-header-cell *matHeaderCellDef> Mesec </th>
+    <td mat-cell *matCellDef="let element"> {{element.month}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Grade">
+    <th mat-header-cell *matHeaderCellDef> Ocena </th>
+    <td mat-cell *matCellDef="let element">{{element.grade}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="delete">
+    <th mat-header-cell *matHeaderCellDef> Izbriši </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button color="warn" (click)="deleteVacationLeave(element.Id)">
+          <mat-icon class="mat-18">delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+ 
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
