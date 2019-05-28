@@ -44,7 +44,7 @@ export class VacationleaveCreateComponent implements OnInit {
   } 
 
   public fillUserDropdown = () => {
-    this.repoService.getData('Users').subscribe(res => {
+    this.functionRepoService.getUsers().subscribe(res => {
       this.listDataSource = res as User[];
     })
   }
@@ -61,11 +61,14 @@ export class VacationleaveCreateComponent implements OnInit {
       var dateFrom = moment(vacationLeaveData.DateFrom).format('YYYY-MM-DD');
       var dateTo = moment(vacationLeaveData.DateTo).format('YYYY-MM-DD');
       //send notification of new vacation leave request
-      this.functionRepoService.sendNotification(vacationLeaveData.User.Name,dateFrom,dateTo).subscribe(res => {
-        this.location.back();
-      });
+      this.functionRepoService.getUsers(newvacationleave.UserId).subscribe(res => {
+        var user = res as User;
+        this.functionRepoService.sendNotification(user.Name,dateFrom,dateTo).subscribe(res => {
+          this.location.back();
+        });
+      });     
     }, error => {
-      console.log(error.status);
+      console.log(error);
     });
   }
 

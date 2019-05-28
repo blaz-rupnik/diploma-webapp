@@ -7,6 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './error-pages/not-found/not-found.component';
+import { MonthlyratingsComponent } from './monthlyratings/monthlyratings.component';
+import { MonthlyratingCreateComponent } from './monthlyratings/monthlyrating-create/monthlyrating-create.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -17,6 +19,9 @@ const routes: Routes = [
 
   { path: 'vacationleaves', component: VacationleavesComponent },
   { path: 'vacationleaves/new', component: VacationleaveCreateComponent },
+
+  { path: 'monthlyratings', component: MonthlyratingsComponent },
+  { path: 'monthlyratings/new', component: MonthlyratingCreateComponent },
 
   { path: '404', component: NotFoundComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },

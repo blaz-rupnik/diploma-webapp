@@ -1,0 +1,7 @@
+{
+    "appService.zipIgnorePattern": [
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/e40819bc-4008-4bc6-8cb8-e1e35cddb3ca/resourceGroups/appsvc_rg_linux_centralus/providers/Microsoft.Web/sites/blaz-diploma-serverless-webapp",
+    "appService.deploySubpath": ""
+}

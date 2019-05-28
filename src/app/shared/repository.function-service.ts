@@ -3,6 +3,7 @@ import { User } from './../users/user.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from './../../environments/environment';
+import { MonthlyRating } from '../monthlyratings/monthlyrating.model';
  
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ import { environment } from './../../environments/environment';
 export class RepositoryFunctionService{
     constructor(private http: HttpClient){ }
 
+    //workflows, etc
     public checkDbIntegrity = () => {
       return this.http.get(`${environment.urlFunctionsAddress}/CheckIntegrity`);
     }
@@ -25,6 +27,7 @@ export class RepositoryFunctionService{
       return this.http.get(`${environment.urlFunctionsAddress}/GetTasks`);
     }
 
+    //users
     public getUsers = (userId?: string) => {
       if(userId){
         return this.http.get(`${environment.urlFunctionsAddress}/GetUsers?userId=${userId}`);
@@ -39,6 +42,16 @@ export class RepositoryFunctionService{
       return this.http.post(`${environment.urlFunctionsAddress}/CreateUser`, user, this.generateHeaders())
     }
 
+    //monthly ratings
+    public getMonthlyRatings = (userId: string) => {
+      return this.http.get(`${environment.urlFunctionsAddress}/GetMonthlyGrades?userId=${userId}`);
+    }
+
+    public createMonthlyRating = (monthlyrating: MonthlyRating) => {
+      return this.http.post(`${environment.urlFunctionsAddress}/CreateMonthlyRating`, monthlyrating, this.generateHeaders());
+    }
+
+    //vacation leaves
     public getVacationLeaves = (absenceId?: string) => {
       if(absenceId){
         return this.http.get(`${environment.urlFunctionsAddress}/GetVacationLeaves?absenceId=${absenceId}`);
@@ -53,6 +66,7 @@ export class RepositoryFunctionService{
       return this.http.post(`${environment.urlFunctionsAddress}/CreateVacationLeave`, absence, this.generateHeaders());
     }
 
+    //private helpers
     private generateHeaders = () => {
       return {
         headers: new HttpHeaders({'Content-Type': 'application/json'})

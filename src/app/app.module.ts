@@ -20,6 +20,8 @@ import { VacationleavesComponent } from './vacationleaves/vacationleaves.compone
 import { VacationleaveCreateComponent } from './vacationleaves/vacationleave-create/vacationleave-create.component';
 import { FormsModule } from '@angular/forms';
 import { HomeTasksComponent } from './home/home-tasks/home-tasks.component';
+import { MonthlyratingsComponent } from './monthlyratings/monthlyratings.component';
+import { MonthlyratingCreateComponent } from './monthlyratings/monthlyrating-create/monthlyrating-create.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { HomeTasksComponent } from './home/home-tasks/home-tasks.component';
     UserCreateComponent,
     VacationleavesComponent,
     VacationleaveCreateComponent,
-    HomeTasksComponent
+    HomeTasksComponent,
+    MonthlyratingsComponent,
+    MonthlyratingCreateComponent
   ],
   imports: [
     BrowserModule,
