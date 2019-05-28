@@ -26,6 +26,9 @@ export class RepositoryFunctionService{
     public getTasks = () => {
       return this.http.get(`${environment.urlFunctionsAddress}/GetTasks`);
     }
+    public getGradeSummary = () => {
+      return this.http.get(`${environment.urlFunctionsAddress}/GetSummaryData`);
+    }
 
     //users
     public getUsers = (userId?: string) => {

@@ -9,3 +9,7 @@ th.mat-header-cell {
     text-align: left;
     max-width: 300px;
 }
+
+th.mat-sort-header-sorted {
+    color: black;
+  }

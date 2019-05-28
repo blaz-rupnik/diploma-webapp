@@ -1,5 +1,5 @@
 import { MonthlyRating } from './monthlyrating.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { RepositoryFunctionService } from '../shared/repository.function-service';
 import { User } from '../users/user.model';
 import { MatTableDataSource } from '@angular/material';

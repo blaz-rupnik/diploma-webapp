@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTabsModule, MatSidenavModule, MatIconModule, MatButtonModule, MatToolbarModule,
   MatListModule, MatTableModule, MatProgressBarModule, MatProgressSpinnerModule, MatCheckboxModule,
-  MatCardModule, MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatOptionModule } from '@angular/material';
+  MatCardModule, MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, MatInputModule, MatSelectModule,
+  MatOptionModule } from '@angular/material';
 
 @NgModule({
   declarations: [],

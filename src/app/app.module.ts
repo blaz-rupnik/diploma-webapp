@@ -22,6 +22,7 @@ import { FormsModule } from '@angular/forms';
 import { HomeTasksComponent } from './home/home-tasks/home-tasks.component';
 import { MonthlyratingsComponent } from './monthlyratings/monthlyratings.component';
 import { MonthlyratingCreateComponent } from './monthlyratings/monthlyrating-create/monthlyrating-create.component';
+import { HomeSummaryComponent } from './home/home-summary/home-summary.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MonthlyratingCreateComponent } from './monthlyratings/monthlyrating-cre
     VacationleaveCreateComponent,
     HomeTasksComponent,
     MonthlyratingsComponent,
-    MonthlyratingCreateComponent
+    MonthlyratingCreateComponent,
+    HomeSummaryComponent
   ],
   imports: [
     BrowserModule,
