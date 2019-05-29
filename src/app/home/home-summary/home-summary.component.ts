@@ -24,7 +24,6 @@ export class HomeSummaryComponent implements OnInit {
   public getGradeSummaryData = () => {
     this.functionRepoService.getGradeSummary().subscribe(res => {
       this.dataSource = res as SummmaryGrade[];
-      console.log(this.dataSource);
     })
   }
 }

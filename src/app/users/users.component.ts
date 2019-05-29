@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { Router } from '@angular/router';
 import { User } from './user.model';
-import { RepositoryService } from '../shared/repository.service';
+import { ToastrService } from 'ngx-toastr';
 import { RepositoryFunctionService } from '../shared/repository.function-service';
 
 @Component({
@@ -16,7 +16,7 @@ export class UsersComponent implements OnInit {
   public displayedColumns = ['Name','DateOfBirth','details','delete'];
 
   constructor(
-    //private repoService: RepositoryService,
+    private toastr: ToastrService,
     private functionRepoService: RepositoryFunctionService,
     private router: Router
   ) { }
@@ -39,6 +39,7 @@ export class UsersComponent implements OnInit {
   public deleteUser = (id: string) => {
     this.functionRepoService.deleteUser(id).subscribe(res => {
       this.getUsers();
+      this.toastr.success("Uporabnik je bil izbrisan");
     })
   }
 

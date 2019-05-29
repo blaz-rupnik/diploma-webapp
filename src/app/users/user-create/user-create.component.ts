@@ -1,9 +1,9 @@
 import { User } from './../user.model';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { RepositoryService } from 'src/app/shared/repository.service';
-import { Location } from '@angular/common'
+import { Location } from '@angular/common';
 import { RepositoryFunctionService } from 'src/app/shared/repository.function-service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-create',
@@ -16,6 +16,7 @@ export class UserCreateComponent implements OnInit {
 
   constructor(
     private location: Location,
+    private toastr: ToastrService,
     //private repository: RepositoryService,
     private functionRepoService: RepositoryFunctionService
   ) { }
@@ -42,7 +43,10 @@ export class UserCreateComponent implements OnInit {
       DateOfBirth: userFromValue.dateOfBirth
     }
     this.functionRepoService.createUser(newuser).subscribe(res => {
+      this.toastr.success(newuser.Name + " je bil uspešno dodan", '', { positionClass: 'toast-top-center' });      
       this.location.back();
+    }, error => {
+      this.toastr.error(error);
     });
   }
 
