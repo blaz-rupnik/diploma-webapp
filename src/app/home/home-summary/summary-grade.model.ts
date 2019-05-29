@@ -1,4 +1,4 @@
 export interface SummmaryGrade {
-    Month: number,
+    Month: string,
     AverageGrade: number
 }
