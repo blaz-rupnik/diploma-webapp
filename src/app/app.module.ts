@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { DxChartModule } from 'devextreme-angular';
+import { DxChartModule, DxPieChartModule } from 'devextreme-angular';
 import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -54,6 +54,7 @@ import { HomeSummaryComponent } from './home/home-summary/home-summary.component
     ReactiveFormsModule,
     FormsModule,
     DxChartModule,
+    DxPieChartModule,
     ToastrModule.forRoot()
   ],
   providers: [],

@@ -6,6 +6,7 @@ import { RepositoryService } from 'src/app/shared/repository.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import * as moment from 'moment';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-vacationleave-create',
@@ -21,7 +22,8 @@ export class VacationleaveCreateComponent implements OnInit {
   constructor(
     private repoService: RepositoryService,
     private functionRepoService: RepositoryFunctionService,
-    private location: Location
+    private location: Location,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -65,6 +67,7 @@ export class VacationleaveCreateComponent implements OnInit {
         var user = res as User;
         this.functionRepoService.sendNotification(user.Name,dateFrom,dateTo).subscribe(res => {
           this.location.back();
+          this.toastr.success('Ustvarjena zahteva za letni dopust.','', { positionClass: 'toast-top-center' });
         });
       });     
     }, error => {

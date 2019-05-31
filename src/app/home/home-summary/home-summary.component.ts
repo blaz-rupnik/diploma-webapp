@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RepositoryFunctionService } from 'src/app/shared/repository.function-service';
-import { SummmaryGrade } from './summary-grade.model';
+import { SummmaryGrade, PieData } from './summary-grade.model';
 
 @Component({
   selector: 'app-home-summary',
@@ -8,7 +8,7 @@ import { SummmaryGrade } from './summary-grade.model';
   styleUrls: ['./home-summary.component.css']
 })
 export class HomeSummaryComponent implements OnInit {
-
+  public pieDataSource: PieData[];
   public dataSource: SummmaryGrade[];
   public elem: HTMLElement = document.getElementById('gradeChart');
 
@@ -18,7 +18,13 @@ export class HomeSummaryComponent implements OnInit {
 
   ngOnInit() {
     this.getGradeSummaryData();
-    
+    this.pieDataSource = [{
+      Type: "Delovni dnevi", Quantity: 220,
+    },{
+      Type: "Dela prosti dnevi", Quantity: 14,
+    },{
+      Type: "Namenjen dopust", Quantity: 25
+    }];
   }
 
   public getGradeSummaryData = () => {

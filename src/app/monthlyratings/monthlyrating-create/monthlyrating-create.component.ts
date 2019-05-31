@@ -4,6 +4,8 @@ import { RepositoryFunctionService } from 'src/app/shared/repository.function-se
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { User } from 'src/app/users/user.model';
 import { Location } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
+import { DataService } from 'src/app/shared/data.service';
 
 @Component({
   selector: 'app-monthlyrating-create',
@@ -18,13 +20,14 @@ export class MonthlyratingCreateComponent implements OnInit {
 
   constructor(
     private functionRepoService: RepositoryFunctionService,
-    private location: Location
+    private location: Location,
+    private toastr: ToastrService,
+    private dataService: DataService
   ) { }
 
   ngOnInit() {
     //fill user dropdown
     this.fillUserDropdown();
-
     this.monthlyRatingForm = new FormGroup({
       user: new FormControl('',[Validators.required]),
       year: new FormControl('', [Validators.required]),
@@ -44,6 +47,13 @@ export class MonthlyratingCreateComponent implements OnInit {
   public fillUserDropdown = () => {
     this.functionRepoService.getUsers().subscribe(res => {
       this.listDataSource = res as User[];
+      if(this.dataService.requestedId !== ''){
+        //check if user exists
+        let exists = this.listDataSource.find(x => x.Id === this.dataService.requestedId);
+        if(exists !== undefined){
+          this.monthlyRatingForm.get('user').setValue(this.dataService.requestedId);
+        }
+      }
     })
   }
 
@@ -57,7 +67,8 @@ export class MonthlyratingCreateComponent implements OnInit {
     }
     
     this.functionRepoService.createMonthlyRating(newmonthlyrating).subscribe(res => {
-      this.location.back();    
+      this.location.back();
+      this.toastr.success("Mesečna ocena je bila ustvarjena.", '', { positionClass: 'toast-top-center' });    
     });
   }
 

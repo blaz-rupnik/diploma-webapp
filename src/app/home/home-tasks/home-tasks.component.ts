@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RepositoryFunctionService } from 'src/app/shared/repository.function-service';
 import { Task } from './task.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home-tasks',
@@ -12,7 +13,8 @@ export class HomeTasksComponent implements OnInit {
   public tasks: Task[]
 
   constructor(
-    private _functionsRepoService: RepositoryFunctionService
+    private _functionsRepoService: RepositoryFunctionService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -29,6 +31,7 @@ export class HomeTasksComponent implements OnInit {
     if(task.TaskAction === 0){
       this._functionsRepoService.handleAbsenceRequest(1,task.EntityInstanceId).subscribe(res => {
         this.getTasks();
+        this.toastr.info("Zahteva za dopust je bila odobrena.", '', { positionClass: 'toast-top-center' });
       });
     }
   }
@@ -37,6 +40,7 @@ export class HomeTasksComponent implements OnInit {
     if(task.TaskAction === 0){
       this._functionsRepoService.handleAbsenceRequest(0,task.EntityInstanceId).subscribe(res => {
         this.getTasks();
+        this.toastr.info("Zahteva za dopust je bila zavrnjena.", '', { positionClass: 'toast-top-center' });
       });
     }
   }

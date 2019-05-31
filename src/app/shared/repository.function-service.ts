@@ -53,6 +53,9 @@ export class RepositoryFunctionService{
     public createMonthlyRating = (monthlyrating: MonthlyRating) => {
       return this.http.post(`${environment.urlFunctionsAddress}/CreateMonthlyGrade`, monthlyrating, this.generateHeaders());
     }
+    public deleteMonthlyRating = (gradeId: string) => {
+      return this.http.delete(`${environment.urlFunctionsAddress}/DeleteMonthlyGrade?gradeId=${gradeId}`);
+    }
 
     //vacation leaves
     public getVacationLeaves = (absenceId?: string) => {

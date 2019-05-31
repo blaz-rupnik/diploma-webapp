@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material';
 import { RepositoryService } from '../shared/repository.service';
 import { Router } from '@angular/router';
 import { RepositoryFunctionService } from '../shared/repository.function-service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-vacationleaves',
@@ -17,7 +18,8 @@ export class VacationleavesComponent implements OnInit {
 
   constructor(
     private repoService: RepositoryService,
-    private functionsRepoService: RepositoryFunctionService
+    private functionsRepoService: RepositoryFunctionService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -32,6 +34,7 @@ export class VacationleavesComponent implements OnInit {
 
   public deleteVacationLeave = (id: string) => {
     this.functionsRepoService.deleteVacationLeave(id).subscribe(res => {
+      this.toastr.success('Letni dopust je bil odstranjen.','', { positionClass: 'toast-top-center' });
       this.getVacationLeaves();
     })
   }

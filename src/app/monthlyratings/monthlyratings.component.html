@@ -1,6 +1,6 @@
 <mat-form-field fxLayoutAlign="center center">
   <mat-label>Izberi zaposlenega</mat-label>
-  <mat-select (selectionChange)="changeUser($event.value)">
+  <mat-select (selectionChange)="changeUser($event.value)" [(value)]="selected">
     <mat-option *ngFor="let user of userDataSource" [value]="user.Id">
       {{user.Name}}
     </mat-option>

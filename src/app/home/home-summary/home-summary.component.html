@@ -1,6 +1,6 @@
 <br>
 <dx-chart
-  id="chart" style="width: 90%"
+  id="chart"
   [dataSource]="dataSource">
   <dxi-series
     argumentField="month"
@@ -10,3 +10,22 @@
     color="#ffaa66">
   </dxi-series>
 </dx-chart>
+<dx-pie-chart
+  id="pie"
+  title="Plan za posameznega sodelavca za 2019"
+  palette="bright"
+  [dataSource]="pieDataSource">
+  <dxo-legend verticalAlignment="bottom"
+              horizontalAlignment="center"
+              itemTextPosition="right">
+  </dxo-legend>
+  <dxi-series
+    argumentField="Type"
+    valueField="Quantity">
+    <dxo-label [visible]="true">
+      <dxo-connector
+        [visible]="true"
+        [width]="1"></dxo-connector>
+    </dxo-label>
+  </dxi-series>
+</dx-pie-chart>
