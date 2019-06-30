@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RepositoryFunctionService } from 'src/app/shared/repository.function-service';
 import { SummmaryGrade, PieData } from './summary-grade.model';
+import { ErrorHandlerService } from 'src/app/shared/errorhandler.service';
 
 @Component({
   selector: 'app-home-summary',
@@ -13,7 +14,8 @@ export class HomeSummaryComponent implements OnInit {
   public elem: HTMLElement = document.getElementById('gradeChart');
 
   constructor(
-    private functionRepoService: RepositoryFunctionService
+    private functionRepoService: RepositoryFunctionService,
+    private errorLog: ErrorHandlerService
   ) { }
 
   ngOnInit() {
@@ -30,6 +32,8 @@ export class HomeSummaryComponent implements OnInit {
   public getGradeSummaryData = () => {
     this.functionRepoService.getGradeSummary().subscribe(res => {
       this.dataSource = res as SummmaryGrade[];
+    }, error => {
+      this.errorLog.writeError(error.message).subscribe(res => {console.log("error logged.")})
     })
   }
 }
